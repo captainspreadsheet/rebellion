@@ -3,36 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Website</title>
+    <title>Web Rebellion | Luxe Minimal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #05070b;
+            --panel: rgba(255, 255, 255, 0.04);
+            --text: #e9edf5;
+            --muted: #9aa3b8;
+            --accent: #9b87ff;
+            --accent-2: #6ae3ff;
+            --border: rgba(255, 255, 255, 0.08);
+            --glow: 0 30px 80px rgba(155, 135, 255, 0.12);
+            color-scheme: dark;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--text);
+            background: radial-gradient(circle at 20% 20%, rgba(155, 135, 255, 0.08), transparent 30%),
+                        radial-gradient(circle at 80% 0%, rgba(106, 227, 255, 0.08), transparent 35%),
+                        var(--bg);
+            min-height: 100vh;
+        }
+        a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(14px);
+            background: rgba(5, 7, 11, 0.65);
+            border-bottom: 1px solid var(--border);
+            z-index: 10;
+        }
+        .nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        .brand-badge {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            display: grid;
+            place-items: center;
+            color: #05070b;
+            font-weight: 700;
+            box-shadow: 0 12px 30px rgba(106, 227, 255, 0.25);
+        }
+        nav {
+            display: flex;
+            gap: 16px;
+        }
+        nav a {
+            padding: 10px 14px;
+            border-radius: 12px;
+            transition: background 0.2s ease, color 0.2s ease;
+            color: var(--muted);
+            font-weight: 500;
+        }
+        nav a:hover {
+            background: var(--panel);
+            color: var(--text);
+        }
+        .cta {
+            padding: 10px 16px;
+            border-radius: 12px;
+            background: linear-gradient(120deg, var(--accent), var(--accent-2));
+            color: #05070b;
+            font-weight: 700;
+            box-shadow: 0 12px 30px rgba(155, 135, 255, 0.35);
+        }
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+            display: flex;
+            flex-direction: column;
+            gap: 72px;
+        }
+        .hero {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            align-items: center;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', 'Inter', serif;
+            font-size: clamp(36px, 6vw, 56px);
+            line-height: 1.1;
+            margin: 0 0 16px 0;
+        }
+        .hero p {
+            margin: 0 0 24px 0;
+            color: var(--muted);
+            font-size: 18px;
+            max-width: 540px;
+        }
+        .hero-card {
+            padding: 22px;
+            border-radius: 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            box-shadow: var(--glow);
+        }
+        .hero-meta {
+            display: flex;
+            gap: 18px;
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+        section h2 {
+            margin: 0 0 12px 0;
+            font-size: 24px;
+            letter-spacing: 0.04em;
+        }
+        section p {
+            margin: 0 0 16px 0;
+            color: var(--muted);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+        .card {
+            padding: 18px 16px;
+            border-radius: 16px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            transition: transform 0.25s ease, border-color 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(155, 135, 255, 0.5);
+        }
+        .card h3 {
+            margin: 0 0 8px 0;
+            font-size: 18px;
+        }
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(155, 135, 255, 0.08);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 22px 24px 40px;
+            background: rgba(5, 7, 11, 0.8);
+        }
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--muted);
+            font-size: 14px;
+        }
+        @media (max-width: 640px) {
+            nav {
+                display: none;
+            }
+            .nav {
+                justify-content: space-between;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Website</h1>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
+        <div class="nav">
+            <div class="brand">
+                <div class="brand-badge">WR</div>
+                Web Rebellion
+            </div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <a class="cta" href="#contact">Book a Call</a>
+        </div>
     </header>
 
     <main>
-        <section id="about">
-            <h2>About Me</h2>
-            <p>This is my first website. I built it myself.</p>
+        <section class="hero" id="about">
+            <div>
+                <div class="pill">Boutique digital studio</div>
+                <h1>We craft sleek, luxurious experiences for bold brands.</h1>
+                <p>Web Rebellion blends high polish aesthetics with disciplined product thinking. Each build is tailored, performant, and unmistakably premium.</p>
+                <div class="hero-meta">
+                    <span>• Luxury web design</span>
+                    <span>• Bespoke branding</span>
+                    <span>• Product polish</span>
+                </div>
+            </div>
+            <div class="hero-card">
+                <h2>Why us</h2>
+                <p>Minimal, cinematic layouts; frictionless user flows; and obsessive attention to micro-interactions.</p>
+                <div class="hero-meta">
+                    <span>48h concepts</span>
+                    <span>Global clientele</span>
+                    <span>Remote-first</span>
+                </div>
+            </div>
         </section>
 
         <section id="projects">
-            <h2>My Projects</h2>
-            <ul>
-                <li>Project 1</li>
-                <li>Project 2</li>
-                <li>Project 3</li>
-            </ul>
+            <h2>Signature work</h2>
+            <p>A curated selection of recent collaborations.</p>
+            <div class="grid">
+                <article class="card">
+                    <h3>Monarch Atelier</h3>
+                    <p>Editorial e-commerce for a couture fashion house with cinematic storytelling.</p>
+                </article>
+                <article class="card">
+                    <h3>Astoria Private</h3>
+                    <p>Wealth management portal with discreet luxury aesthetic and intuitive dashboards.</p>
+                </article>
+                <article class="card">
+                    <h3>Helios Residence</h3>
+                    <p>Real estate showcase with immersive imagery and guided booking flow.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Let’s create something iconic</h2>
+            <p>Tell us about your brand, and we will craft a bespoke digital presence that feels inevitable.</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Partner with us</h3>
+                    <p>Email: hello@webrebellion.studio</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+                <div class="card">
+                    <h3>Visit</h3>
+                    <p>By appointment only</p>
+                    <p>New York • London • Remote</p>
+                </div>
+                <div class="card">
+                    <h3>Follow</h3>
+                    <p>Instagram / Dribbble / Behance</p>
+                    <p>Fresh drops, behind-the-scenes, and process notes.</p>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 My Website. All rights reserved.</p>
+        <div class="footer-inner">
+            <div>&copy; 2026 Web Rebellion. Crafted with intent.</div>
+            <div>Privacy — Terms</div>
+        </div>
     </footer>
 </body>
 </html>
